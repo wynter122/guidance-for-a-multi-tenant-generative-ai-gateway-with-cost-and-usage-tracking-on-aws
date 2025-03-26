@@ -188,16 +188,16 @@ class Network(Construct):
         )
 
         # SageMaker Runtime FIPS VPCE
-        ec2.CfnVPCEndpoint(
-            self,
-            f"{self.id}_vpce_sagemaker_runtime_fips",
-            service_name=f"com.amazonaws.{self.region}.sagemaker.runtime-fips",
-            vpc_id=vpc.vpc_id,
-            private_dns_enabled=True,
-            security_group_ids=[endpoint_security_group.security_group_id],
-            subnet_ids=[private_subnet1.subnet_id, private_subnet2.subnet_id],
-            vpc_endpoint_type="Interface"
-        )
+        # ec2.CfnVPCEndpoint(
+        #     self,
+        #     f"{self.id}_vpce_sagemaker_runtime_fips",
+        #     service_name=f"com.amazonaws.{self.region}.sagemaker.runtime-fips",
+        #     vpc_id=vpc.vpc_id,
+        #     private_dns_enabled=True,
+        #     security_group_ids=[endpoint_security_group.security_group_id],
+        #     subnet_ids=[private_subnet1.subnet_id, private_subnet2.subnet_id],
+        #     vpc_endpoint_type="Interface"
+        # )
 
         for el in self.dependencies:
             vpc.node.add_dependency(el)
